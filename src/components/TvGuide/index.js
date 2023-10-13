@@ -12,7 +12,7 @@ const TVGuide = () => {
     channels: []
   }
 
-  const modifiedChannels = channels.slice(50, 60)
+  const modifiedChannels = channels.slice(10, 70)
 
   return (
     <div className="tv-guide-programs">

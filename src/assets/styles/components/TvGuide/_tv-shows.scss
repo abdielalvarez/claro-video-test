@@ -1,0 +1,58 @@
+$width-per-minute: 5.20866667;
+
+.tv-shows {
+  display: flex;
+
+  &__schedule {
+    position: relative;
+
+    &__time {
+      &-header {
+        display: flex;
+        height: 40px;
+        background-color: $background-color;
+        position: sticky;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        &__hour {
+          border-bottom: 1px solid $border-color;
+          text-align: left;
+          min-width: 156.26px;
+          max-width: 156.26px;
+          display: flex;
+          align-items: center;
+        }
+      }
+    }
+
+    &__programs {
+      position: relative;
+      background-color: $background-box;
+    }
+  }
+
+  &__program {
+    display: flex;
+    height: 120.8px;
+
+    &__item {
+      position: relative;
+      text-align: left;
+      border: 1px solid $border-color;
+      &__channel {
+        font-weight: bold;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      &__time {
+        font-size: 0.8em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}

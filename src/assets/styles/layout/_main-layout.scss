@@ -1,0 +1,58 @@
+.main-layout {
+  height: 100vh;
+  &__header {
+    color: $main-text;
+    padding: 20px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    
+    &__title {
+      font-size: 24px;
+      margin: 0;
+    }
+    
+    &__description {
+      font-size: 16px;
+      margin: 10px 0;
+    }
+    
+    &__user-info {
+      display: flex;
+      align-items: center;
+      
+      &__avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #444;
+        overflow: hidden;
+        &__image {
+          object-fit: cover;
+        }
+      }
+      
+      &__text {
+        margin-left: 10px;
+        
+        &__name {
+          font-weight: bold;
+        }
+        
+        &__message {
+          font-size: 14px;
+          color: #999;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 780px) {
+    &__header {
+      flex-direction: column;
+      height: 127px;
+    }
+  }
+}
+
+

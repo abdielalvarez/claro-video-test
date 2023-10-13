@@ -1,0 +1,25 @@
+.entry-button {
+  display: inline-block;
+  padding: 10px 20px;
+  width: 350px;
+  background-color: $button-color;
+  color: $light-text-color;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px;
+  transition: background-color 0.3s;
+  margin: 0 10px
+}
+
+.entry-button:hover {
+  background-color: $hover-color;
+}
+
+.entry-button-text {
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+}

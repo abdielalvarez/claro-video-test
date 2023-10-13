@@ -35,6 +35,7 @@ const ChannelsList = ({ modifiedChannels }) => {
       index: 0,
       date: selectDate()[0]
     } });
+    // eslint-disable-next-line
   }, [data])
 
   const handleBack = () => {

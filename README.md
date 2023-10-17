@@ -13,7 +13,7 @@ y en todas las resoluciones se ve bien
 Se usaron Pure Components, Lazy Loading, Suspense,
 HOC, componentes de función y componentes de clase
 Container-Presentational, el uso de varios hooks, como
-useState, useEffect, useContext, useReducer
+useState, useEffect, useContext, useReducer, useMemo, useCallback
 
 -Unit testing
 Se probaron algunas partes de la aplicación para probar
@@ -23,9 +23,8 @@ ACLARACIONES IMPORTANTES:
 Debido a que la API trae muchos resultados importantes en Null y vacios
 en el selector aparecerá el nombre NA, número de temporada, episodio, descripción
 e imagen como Null o string vacios, si desea ver como se vería si la api
-si trajera esos datos correctamente, basta con que en
-src/components/PopupContent.js hardcodeen los datos para ver como se vería realmente
-y los valores espero obtenerlos en selectedTvShow proveniente de mi contexto
+si trajera esos datos correctamente, basta con que den click en Ver Mocks para
+ver como se vería la información si viniera llena
 
 Para correr la aplicación
 npm start

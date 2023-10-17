@@ -23,6 +23,7 @@ const TvShow = ({ programs }) => {
       type: 'SELECT_SHOW',
       payload: emptyTvShow
     });
+  // eslint-disable-next-line
   }, [isPopupOpen])
 
   const handleHover = (index, mouseIn) => {

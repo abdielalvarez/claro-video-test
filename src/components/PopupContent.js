@@ -30,6 +30,7 @@ const PopupContent = () => {
         if (name) return name
         if (tvIsEmpty) return 'No hay información que mostrar'
         return ''
+    // eslint-disable-next-line
     }, [selectedTvShow])
 
     const text = checkTextRender()

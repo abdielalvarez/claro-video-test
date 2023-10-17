@@ -26,7 +26,7 @@ const TVShows = ({ modifiedChannels }) => {
             const tvShows = parseDataForTvShows(channel, selectedDate.date)
             return <TvShow
               key={id}
-              programas={tvShows}
+              programs={tvShows}
             />
           })}
         </div>

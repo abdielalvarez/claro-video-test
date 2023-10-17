@@ -63,23 +63,35 @@ export const parseDataForTvShows = (channel, filterDate = null) => {
     return shows;
 };
 
-export const determineDateSelector = (channels) => {
+const extractEvent = event => {
+    const { date_begin, date_end } = event;
+    const startDate = date_begin.split(' ')[0];
+    const endDate = date_end.split(' ')[0];
+    return [startDate, endDate];
+};
+
+const extractChannel = channel => {
     const uniqueDates = new Set();
-
-    channels.forEach(channel => {
-        const events = channel.events;
-
-        events.forEach(event => {
-            const { date_begin, date_end } = event;
-            const startDate = date_begin.split(' ')[0];
-            const endDate = date_end.split(' ')[0];
-
-            uniqueDates.add(startDate);
-            uniqueDates.add(endDate);
-        });
+    channel.events.forEach(event => {
+        const [startDate, endDate] = extractEvent(event);
+        uniqueDates.add(startDate);
+        uniqueDates.add(endDate);
     });
+    return Array.from(uniqueDates);
+};
 
-    const uniqueDatesArray = Array.from(uniqueDates);
+const combineUniqueDates = (channels) => {
+    return channels.reduce((uniqueDates, channel) => {
+        const dates = extractChannel(channel);
+        dates.forEach(date => uniqueDates.add(date));
+        return uniqueDates;
+    }, new Set());
+};
+
+export const determineDateSelector = (channels) => {
+    const uniqueDatesArray = Array.from(
+        combineUniqueDates(channels)
+    );
 
     uniqueDatesArray.sort((a, b) => {
         const dateA = new Date(a);
@@ -93,23 +105,57 @@ export const determineDateSelector = (channels) => {
 export const formatTimeDifference = (startTime = '00:00', endTime = '00:00') => {
     const [startHour, startMinute] = startTime.split(':').map(Number);
     const [endHour, endMinute] = endTime.split(':').map(Number);
-  
+
     const hourDiff = endHour - startHour;
     const minuteDiff = endMinute - startMinute;
-  
+
     let formattedTime = '';
-  
+
     if (hourDiff > 0) {
         formattedTime += `${hourDiff}h `;
     }
-  
+
     if (minuteDiff > 0) {
         formattedTime += `${minuteDiff}min`;
     }
-  
+
     if (hourDiff === 0) {
         formattedTime = `${minuteDiff}min`;
     }
-  
+
     return formattedTime;
 }
+
+export const programWidth = (programa) => {
+    const { startTime, endTime } = programa;
+    const startParts = startTime.split(':');
+    const endParts = endTime.split(':');
+    const startHour = parseInt(startParts[0]);
+    const startMinute = parseInt(startParts[1]);
+    const endHour = parseInt(endParts[0]);
+    const endMinute = parseInt(endParts[1]);
+    const startOffset = startHour * 60 + startMinute;
+    const endOffset = endHour * 60 + endMinute;
+    const width = ((endOffset - startOffset) / 30) * 156.26;
+    return width;
+};
+
+export const calculateLeftOffsets = (programs) => {
+    let leftOffset = 0;
+    const programsWithOffset = programs.map((program, index) => {
+      const { startTime } = program;
+      const startOffset = startTime
+        .split(':')
+        .reduce((acc, cur) => {
+            return (acc * 60) + parseInt(cur)
+        }, 0);
+      if (index === 0 || programs[index - 1].endTime !== startTime) {
+        leftOffset = (startOffset / 30) * 156.26;
+      }
+      return { index, program, leftOffset };
+    });
+    return programsWithOffset
+  };
+  
+  
+  

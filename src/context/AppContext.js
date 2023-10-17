@@ -8,6 +8,7 @@ const initialState = {
     index: 0,
     date: ''
   },
+  isMock: false,
   selectedTvShow: {
     name: '',
     startTime: '',

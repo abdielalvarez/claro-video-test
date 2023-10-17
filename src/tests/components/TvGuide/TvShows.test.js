@@ -13,8 +13,10 @@ describe('TVShows', () => {
       },
     };
 
+    const mockDispatch = jest.fn();
+
     render(
-      <AppContext.Provider value={{ state: mockState }}>
+      <AppContext.Provider value={{ state: mockState, dispatch: mockDispatch }}>
         <TVShows modifiedChannels={[channelMock]} />
       </AppContext.Provider>
     );

@@ -14,6 +14,12 @@
       height: 15px;
       color: $secondary-button-color;
       cursor: pointer;
+      &__mock {
+        color: $secondary-button-color;
+        cursor: pointer;
+        width: 40px;
+        margin: 0 0 0 10px;
+      }
     }
   
     .channels-list {
@@ -22,7 +28,6 @@
         align-items: center;
         font-weight: bold;
         display: flex;
-        justify-content: center;
         background-color: #000;
         border-bottom: 1px solid $border-color;
         position: -webkit-sticky;
@@ -30,6 +35,14 @@
         top: 0;
         left: 0;
         z-index: 1;
+      }
+
+      &__container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 130px;
       }
 
       &__content {

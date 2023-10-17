@@ -20,6 +20,11 @@ const AppReducer = (state, action) => {
           ...state,
           selectedTvShow: action.payload
         };
+      case 'MOCK_VIEW':
+        return {
+          ...state,
+          isMock: action.payload
+        };
       default:
         return state;
     }

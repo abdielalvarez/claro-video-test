@@ -98,9 +98,32 @@ export const initialStateMock = {
             channels: [channelMock],
         },
     },
+    isMock: false,
     selectedDate: {
         index: 0,
         date: '2021/08/12',
+    },
+    selectedTvShow: {
+        name: 'Nombre del Show',
+        startTime: '20:00',
+        endTime: '21:30',
+        season: 3,
+        episode: 5,
+        description: 'Descripción del episodio',
+        image: 'imagen.jpg',
+    },
+};
+
+export const initialStateMockWithDifferentIndex = {
+    data: {
+        response: {
+            channels: [channelMock],
+        },
+    },
+    isMock: true,
+    selectedDate: {
+        index: 1,
+        date: '2021/08/13',
     },
     selectedTvShow: {
         name: 'Nombre del Show',
@@ -123,6 +146,8 @@ export const initialStateIndividualInfoMock = {
         index: 0,
         date: '2021/08/12',
     },
+    isMock: false,
+    isPopupOpen: false,
     selectedTvShow: {
         name: '',
         startTime: '',
